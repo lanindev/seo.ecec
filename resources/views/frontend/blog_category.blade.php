@@ -43,7 +43,7 @@
                 @endforeach
             </ol>
         </nav>
-        
+
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
             <!-- Main Content Area -->
             <main class="lg:col-span-2">
@@ -165,7 +165,8 @@
                     <div class="flex flex-wrap gap-2">
                         @php
                             $tags = [
-                                "SEO搜尋優化",
+                                "SEO",
+                                "搜尋優化",
                                 "網站排名",
                                 "網頁速度",
                                 "內部連結",
@@ -177,37 +178,17 @@
                                 "數據洞察",
                                 "分析工具",
                                 "成功個案",
-                                "成功個案",
                             ];
                         @endphp
 
-                        <span class="cursor-pointer rounded-full bg-sky-50 px-4 py-2 text-sm text-sky-600 transition hover:bg-sky-100">
-                            SEO
-                        </span>
-                        <span class="cursor-pointer rounded-full bg-sky-50 px-4 py-2 text-sm text-sky-600 transition hover:bg-sky-100">
-                            關鍵字優化
-                        </span>
-                        <span class="cursor-pointer rounded-full bg-sky-50 px-4 py-2 text-sm text-sky-600 transition hover:bg-sky-100">
-                            網站排名
-                        </span>
-                        <span class="cursor-pointer rounded-full bg-sky-50 px-4 py-2 text-sm text-sky-600 transition hover:bg-sky-100">
-                            網頁速度
-                        </span>
-                        <span class="cursor-pointer rounded-full bg-sky-50 px-4 py-2 text-sm text-sky-600 transition hover:bg-sky-100">
-                            內部連結
-                        </span>
-                        <span class="cursor-pointer rounded-full bg-sky-50 px-4 py-2 text-sm text-sky-600 transition hover:bg-sky-100">
-                            社群行銷
-                        </span>
-                        <span class="cursor-pointer rounded-full bg-sky-50 px-4 py-2 text-sm text-sky-600 transition hover:bg-sky-100">
-                            品牌經營
-                        </span>
-                        <span class="cursor-pointer rounded-full bg-sky-50 px-4 py-2 text-sm text-sky-600 transition hover:bg-sky-100">
-                            流量分析
-                        </span>
-                        <span class="cursor-pointer rounded-full bg-sky-50 px-4 py-2 text-sm text-sky-600 transition hover:bg-sky-100">
-                            流量分析
-                        </span>
+                        @foreach ($tags as $tags_q)
+                            <a
+                                href="{{ route("blog", ["q" => $tags_q]) }}"
+                                class="cursor-pointer rounded-full bg-sky-50 px-4 py-2 text-sm text-sky-600 transition hover:bg-sky-100"
+                            >
+                                {{ $tags_q }}
+                            </a>
+                        @endforeach
                     </div>
                 </div>
             </aside>
