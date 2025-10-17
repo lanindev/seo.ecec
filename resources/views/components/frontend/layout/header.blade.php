@@ -84,7 +84,7 @@
     </div>
 
     <!-- Mobile navigation menu -->
-    <div x-show="mobileMenuOpen" x-transition class="z-100 fixed w-full md:hidden">
+    <div x-show="mobileMenuOpen" x-transition class="z-100 fixed top-[64px] w-full md:hidden">
         <div class="space-y-1 border-t bg-white px-2 pb-3 pt-2 sm:px-3">
             @foreach ($pages as $page)
                 <a
