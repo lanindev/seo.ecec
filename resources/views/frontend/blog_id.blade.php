@@ -8,25 +8,7 @@
 
 @section("content")
     <div class="mx-auto mb-20 max-w-7xl px-4 py-8">
-        <nav class="mb-6" aria-label="Breadcrumb">
-            <ol class="flex flex-wrap items-center text-base text-gray-600">
-                <li>
-                    <a href="{{ route("home") }}" class="flex items-center transition-colors hover:text-sky-600">首頁</a>
-                </li>
-                <li class="flex items-center">
-                    <i class="fas fa-chevron-right mx-2 text-xs text-gray-400"></i>
-                    <a href="{{ route("blog") }}" class="transition-colors hover:text-sky-600">{{ __("frontend.blog") }}</a>
-                </li>
-                <li class="flex items-center">
-                    <i class="fas fa-chevron-right mx-2 text-xs text-gray-400"></i>
-                    <a href="#" class="transition-colors hover:text-sky-600">{{ $article->category->name }}</a>
-                </li>
-                <li class="flex items-center break-words">
-                    <i class="fas fa-chevron-right mx-2 text-xs text-gray-400"></i>
-                    <span class="break-words font-medium text-gray-900">{{ $article->title }}</span>
-                </li>
-            </ol>
-        </nav>
+        <x-frontend.layout.breadcrumb :breadcrumbs="$breadcrumbs" />
 
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-4">
             <div class="rounded-lg bg-white p-4 shadow-md sm:p-8 lg:col-span-3">

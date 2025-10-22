@@ -80,6 +80,15 @@ class BlogController extends Controller
         $page = new \stdClass();
         $page->slug = "blog";
 
+        $article = Post::with('category')->findOrFail($id);
+
+        $breadcrumbs = [
+            ['label' => '首頁', 'url' => route('home')],
+            ['label' => __('frontend.blog'), 'url' => route('blog')],
+            ['label' => $article->category->name, 'url' => route("blog_category", ["slug" => $article->category->slug])],
+            ['label' => $article->title, 'url' => route("blog_id", ["id" => $article->id, "title" => $article->title])],
+        ];
+
         $post_categories = PostCategory::get();
 
         $latest_articles = Post::with('category')
@@ -87,9 +96,13 @@ class BlogController extends Controller
             ->take(6)
             ->get();
 
-        $article = Post::findOrFail($id);
-
-        return view('frontend.blog_id', compact('page', 'post_categories', 'article', 'latest_articles'));
+        return view('frontend.blog_id', compact(
+            'page',
+            'breadcrumbs',
+            'post_categories',
+            'article',
+            'latest_articles',
+        ));
     }
 
     /**
