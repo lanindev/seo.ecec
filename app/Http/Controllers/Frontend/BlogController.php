@@ -96,12 +96,23 @@ class BlogController extends Controller
             ->take(6)
             ->get();
 
+        $previous_article = Post::where('category_id', $article->category_id)
+            ->where('published_at', '<', $article->published_at)
+            ->orderBy('published_at', 'desc')
+            ->first();
+
+        $next_article = Post::where('category_id', $article->category_id)
+            ->where('published_at', '>', $article->published_at)
+            ->orderBy('published_at', 'asc')
+            ->first();
+
         return view('frontend.blog_id', compact(
             'page',
             'breadcrumbs',
             'post_categories',
             'article',
             'latest_articles',
+            'previous_article', 'next_article'
         ));
     }
 

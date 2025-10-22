@@ -90,6 +90,60 @@
                         <div class="h-px flex-1 bg-gray-200"></div>
                     </div>
                 </div>
+
+                <div class="mt-8">
+                    <div class="grid grid-cols-2 gap-3 md:gap-6">
+                        @if ($previous_article)
+                            <a
+                                href="{{ route("blog_id", ["id" => $previous_article->id, "title" => $previous_article->title]) }}"
+                                class="group flex flex-col rounded-lg border border-gray-200 p-3 transition-all hover:border-sky-500 hover:shadow-md md:p-5"
+                            >
+                                <div class="mb-2 flex items-center gap-1 text-xs font-medium text-gray-500 md:gap-2 md:text-sm">
+                                    <i class="fas fa-chevron-left text-xs"></i>
+                                    <span class="hidden sm:inline">上一篇</span>
+                                </div>
+                                <h3
+                                    class="line-clamp-1 text-xs font-semibold text-gray-900 transition-colors group-hover:text-sky-600 sm:text-sm md:text-base"
+                                >
+                                    {{ $previous_article->title }}
+                                </h3>
+                                @if ($previous_article->category)
+                                    <div class="mt-2 flex items-center gap-1 text-xs text-gray-500 md:mt-3 md:gap-2">
+                                        <i class="fas fa-folder text-[10px] md:text-xs"></i>
+                                        <span class="truncate">{{ $previous_article->category->name }}</span>
+                                    </div>
+                                @endif
+                            </a>
+                        @else
+                            <div></div>
+                        @endif
+
+                        @if ($next_article)
+                            <a
+                                href="{{ route("blog_id", ["id" => $next_article->id, "title" => $next_article->title]) }}"
+                                class="group flex flex-col rounded-lg border border-gray-200 p-3 text-right transition-all hover:border-sky-500 hover:shadow-md md:p-5"
+                            >
+                                <div class="mb-2 flex items-center justify-end gap-1 text-xs font-medium text-gray-500 md:gap-2 md:text-sm">
+                                    <span class="hidden sm:inline">下一篇</span>
+                                    <i class="fas fa-chevron-right text-xs"></i>
+                                </div>
+                                <h3
+                                    class="line-clamp-1 text-xs font-semibold text-gray-900 transition-colors group-hover:text-sky-600 sm:text-sm md:text-base"
+                                >
+                                    {{ $next_article->title }}
+                                </h3>
+                                @if ($next_article->category)
+                                    <div class="mt-2 flex items-center justify-end gap-1 text-xs text-gray-500 md:mt-3 md:gap-2">
+                                        <span class="truncate">{{ $next_article->category->name }}</span>
+                                        <i class="fas fa-folder text-[10px] md:text-xs"></i>
+                                    </div>
+                                @endif
+                            </a>
+                        @else
+                            <div></div>
+                        @endif
+                    </div>
+                </div>
             </div>
 
             <aside class="lg:col-span-1">
