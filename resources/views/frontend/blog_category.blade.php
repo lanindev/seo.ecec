@@ -105,17 +105,24 @@
                 <div class="rounded-lg bg-white p-6 shadow-md">
                     <h3 class="mb-4 flex items-center text-xl font-bold text-gray-800">文章分類</h3>
                     <div class="space-y-1">
-                        <button
-                            class="flex w-full items-center justify-between rounded-xl px-4 py-3 font-semibold text-sky-500 underline transition"
+                        <a
+                            href="{{ route("blog") }}"
+                            class="{{ ! isset($current_category) ? "text-sky-500 underline" : "text-gray-700 underline hover:text-sky-500" }} flex w-full items-center justify-between rounded-xl px-4 py-3 font-semibold transition"
                         >
                             全部文章
-                        </button>
+                        </a>
+
                         @foreach ($post_categories as $post_category)
-                            <button
-                                class="flex w-full items-center justify-between rounded-xl px-4 py-3 font-semibold text-gray-700 underline transition hover:text-sky-500"
+                            <a
+                                href="{{ route("blog_category", ["slug" => $post_category->slug]) }}"
+                                class="{{
+                                    isset($current_category) && $current_category->slug === $post_category->slug
+                                        ? "text-sky-500"
+                                        : "text-gray-700 hover:text-sky-500"
+                                }} flex w-full items-center justify-between rounded-xl px-4 py-3 font-semibold underline transition"
                             >
                                 {{ $post_category->name }}
-                            </button>
+                            </a>
                         @endforeach
                     </div>
                 </div>
