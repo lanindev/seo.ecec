@@ -27,7 +27,7 @@ class CaseModelResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-folder';
 
-    protected static ?int $navigationSort = 4;
+    protected static ?int $navigationSort = 21;
 
     public static function getNavigationGroup(): ?string
     {

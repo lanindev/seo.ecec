@@ -20,7 +20,7 @@ class PostCategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-folder-open';
 
-    protected static ?int $navigationSort = 8;
+    protected static ?int $navigationSort = 30;
 
     public static function getNavigationGroup(): ?string
     {

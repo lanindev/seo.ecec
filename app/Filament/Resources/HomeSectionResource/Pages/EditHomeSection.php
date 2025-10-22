@@ -31,6 +31,8 @@ class EditHomeSection extends EditRecord
         $managerClass = match ($key) {
             'banner' => HomeSectionManager\BannerManager::class,
             'media' => HomeSectionManager\MediaManager::class,
+            'reviews' => HomeSectionManager\ReviewsManager::class,
+            'cases' => HomeSectionManager\CasesManager::class,
             'tech_and_data' => HomeSectionManager\TechAndDataManager::class,
             'our_philosophy' => HomeSectionManager\OurPhilosophyManager::class,
             'seo' => HomeSectionManager\SeoManager::class,

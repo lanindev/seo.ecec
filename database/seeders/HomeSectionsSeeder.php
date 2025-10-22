@@ -52,6 +52,24 @@ class HomeSectionsSeeder extends Seeder
                 ]
             ],
             [
+                'key' => 'reviews',
+                'name' => '真實客戶評價',
+                'data' => [
+                    "title" => "真實客戶評價",
+                    "subtitle" => "我們專注設計頂級用戶體驗的網頁"
+                ]
+            ],
+            [
+                'key' => 'cases',
+                'name' => '客戶成功個案',
+                'data' => [
+                    "title" => "客戶成功個案",
+                    "subtitle" => "我們引以自豪，來自香港各行各業的客戶",
+                    "button_text" => "更多品牌成功故事",
+                    "button_link" => "/cases"
+                ]
+            ],
+            [
                 'key' => 'tech_and_data',
                 'name' => '技術與數據',
                 'data' =>

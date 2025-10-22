@@ -20,6 +20,13 @@ class HomeSectionResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-home';
 
+    protected static ?int $navigationSort = 4;
+
+//    public static function getNavigationGroup(): ?string
+//    {
+//        return __('admin.navigation_group.label');
+//    }
+
     public static function getNavigationLabel(): string
     {
         return __('admin.home_section.resource');

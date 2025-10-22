@@ -32,7 +32,8 @@ class DatabaseSeeder extends Seeder
             HomeSectionsSeeder::class,
             CaseShowcasesSeeder::class,
             PostCategorySeeder::class,
-            SeoSectionSeeder::class
+            SeoSectionSeeder::class,
+            ReviewSeeder::class
         ]);
     }
 }

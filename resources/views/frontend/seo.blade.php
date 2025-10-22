@@ -114,7 +114,7 @@
                     <button
                         @click="filterItems(type.id)"
                         :class="activeFilter === type.id ? 'text-sky-500 after:scale-x-100' : 'text-white after:scale-x-0'"
-                        class="relative rounded-full px-0 py-4 text-base font-medium outline-none transition-all duration-300 after:absolute after:bottom-0 after:left-1/2 after:h-[3px] after:w-full after:origin-center after:-translate-x-1/2 after:scale-x-0 after:bg-sky-500 after:transition-transform after:duration-300 after:content-[''] focus:outline-none md:px-6 md:text-2xl"
+                        class="relative rounded-full px-0 py-4 text-xl font-medium outline-none transition-all duration-300 after:absolute after:bottom-0 after:left-1/2 after:h-[3px] after:w-full after:origin-center after:-translate-x-1/2 after:scale-x-0 after:bg-sky-500 after:transition-transform after:duration-300 after:content-[''] focus:outline-none md:px-6 md:text-2xl"
                         x-text="type.name"
                     ></button>
                 </template>

@@ -70,107 +70,88 @@
             <div class="mb-20 text-center">
                 <div class="inline-block">
                     <div
-                        class="mb-4 bg-gradient-to-r from-sky-400 via-sky-600 to-sky-700 bg-clip-text text-4xl font-bold leading-tight text-transparent md:text-5xl"
+                        class="mb-4 whitespace-pre-line bg-gradient-to-r from-sky-400 via-sky-600 to-sky-700 bg-clip-text text-4xl font-bold leading-tight text-transparent md:text-5xl"
                     >
-                        真實客戶評價
+                        {{ $reviews_section->data["title"] }}
                     </div>
                     <div class="mb-8 h-2 w-full rounded-full bg-gradient-to-r from-sky-400 via-sky-600 to-sky-700"></div>
                 </div>
-                <div class="mx-auto max-w-3xl text-2xl font-medium text-gray-700">我們專注設計頂級用戶體驗的網頁</div>
+                <div class="mx-auto max-w-3xl whitespace-pre-line text-2xl font-medium text-gray-700">
+                    {{ $reviews_section->data["subtitle"] }}
+                </div>
                 <div class="mt-8 flex items-center justify-center space-x-2">
                     <div class="flex text-3xl text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        @php
+                            $stars = $average_stars;
+                            $fullStars = floor($stars);
+                            $halfStar = $stars - $fullStars >= 0.5;
+                            $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
+                        @endphp
+
+                        <span class="text-yellow-400">
+                            @for ($i = 0; $i < $fullStars; $i++)
+                                <i class="fas fa-star"></i>
+                            @endfor
+
+                            @if ($halfStar)
+                                <i class="fas fa-star-half-alt"></i>
+                            @endif
+
+                            @for ($i = 0; $i < $emptyStars; $i++)
+                                <i class="far fa-star"></i>
+                            @endfor
+                        </span>
                     </div>
                     <span class="ml-3 text-xl text-gray-600">來自真實客戶</span>
                 </div>
             </div>
 
-            @php
-                $testimonials = [
-                    [
-                        "name" => "Spencer Lam",
-                        "title" => "Spencer Lam English 創辦人",
-                        "stars" => 5,
-                        "video_url" => "https://youtube.com/watch?v=dQw4w9WgXcQ",
-                        "cover" => "https://flowdigital.com.hk/wp-content/uploads/2023/05/maxresdefault-1.jpg",
-                        "content" =>
-                            "非常多謝Ivan幫忙，短短一個月之內可以把我的網站，一年全新，可以放在全港首頁第一位。 <br /><br /> 其實之前用過好多坊間網絡營銷的公司，全港第一的公司都有用過，但是用了半年除了價格貴五倍，而且又未有效果，只係不斷叫我續加半年，而且有沒有跟進。最令我意外的是Ivan會願意在其他時間給予針對性的建議，令到我哋公司有所增長，營業額比起往年增加最少兩倍，大量成功見證 <br /><br /> 因為我比較少會讚人，所以Ivan真的是少有很有能力很有經驗的團隊，希望可以幫助到更多中小企或者大型公司發展。",
-                    ],
-                    [
-                        "name" => "BEN LEE",
-                        "title" => "《李維記》老闆",
-                        "stars" => 5,
-                        "video_url" => "https://youtube.com/watch?v=dQw4w9WgXcQ",
-                        "cover" => "https://flowdigital.com.hk/wp-content/uploads/2023/07/Client-Interview-Youtube-Thumbnail.png",
-                        "content" =>
-                            "首先好多謝FlowDigital幫我們公司去設計了網站，裏面的內容、設計、風格很適合我們。日本的感覺的想法、而且設計都是很美麗的。 <br /><br /> 所以我好滿意，而另外接下來的我都會與FlowDigital繼續合作，會做到我自己本身的品牌李維記集團，而將所有我公司結合在裏面。 <br /><br /> 合作上最重要都是溝通，也是我們最注重的部分，所以這方面您公司是做得非常好的。我也問最後一條問題，如果要為我們的合作評一至十分，您會大概給多少分呢？ <br /><br /> 非常之開心，真的是十分。",
-                    ],
-                    [
-                        "name" => "Leo Tam",
-                        "title" => "首席室內設計師",
-                        "stars" => 5,
-                        "video_url" => "https://youtube.com/watch?v=dQw4w9WgXcQ",
-                        "cover" => "https://flowdigital.com.hk/wp-content/uploads/2023/07/dicf1219229_07_600x400_1024.jpg",
-                        "content" => "1. 合作過程是否順利？ 超級順利!! <br /><br /> 2. 合作能否滿足您的Marketing需要？ YES! <br /><br /> 3. 對服務是否滿意？ 好滿意! <br /><br /> 4. 最滿意的地方是？ FlowDigital 非常幫手 效率亦很高!! 期待SEO的成果 <br /><br /> 5. 5分滿分會給幾分？ 5 !",
-                    ],
-                    [
-                        "name" => "Ms Priscilla",
-                        "title" => "Ms Priscilla English創辦人",
-                        "stars" => 5,
-                        "video_url" => "https://youtube.com/watch?v=dQw4w9WgXcQ",
-                        "cover" => "https://flowdigital.com.hk/wp-content/uploads/2023/07/ms-priscilla-english-learning.webp",
-                        "content" => "我推薦這家SEO服務公司！他們的推廣策略和分析快速提供我的網站搜索結果中的排名。",
-                    ],
-                    [
-                        "name" => "BEN LEE",
-                        "title" => "《李維記》老闆",
-                        "stars" => 5,
-                        "video_url" => "https://youtube.com/watch?v=dQw4w9WgXcQ",
-                        "cover" => "https://flowdigital.com.hk/wp-content/uploads/2023/07/precise1-1024x683.jpg",
-                        "content" =>
-                            "感謝Flowdigital為我們公司設計和建構網站。知道Flowdigital在與教育中心合作方面有豐富的經驗，所以我找他們來設計我的網站。和他們團隊的合作過程中感到非常愉快，他們為我客製化各種功能和設定，他們所有員工也非常友善，並樂意協助我修訂網站。 <br /><br /> 另一方面，知道Flowdigital提供SEO搜索引擎排名優化的服務，也讓我非常感興趣使用這家公司。我相信這是長期推廣網站和公司的最佳方式之一。再次感謝Flowdigital幫助我開展教育業務。",
-                    ],
-                ];
-            @endphp
-
             <div class="columns-1 gap-x-8 md:columns-2">
-                @foreach ($testimonials as $t)
+                @foreach ($reviews as $row)
                     <div class="mb-8 break-inside-avoid">
                         <div
-                            class="transform rounded-3xl border border-white/20 bg-white/80 p-8 shadow-xl backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl"
+                            class="group transform rounded-3xl border border-white/20 bg-white/80 p-8 shadow-xl backdrop-blur-sm transition-all duration-500 hover:shadow-2xl"
                         >
-                            <div
-                                class="group relative mb-6 cursor-pointer overflow-hidden"
-                                onclick="window.open('{{ $t["video_url"] }}', '_blank')"
-                            >
-                                <img
-                                    src="{{ $t["cover"] }}"
-                                    alt="video_cover"
-                                    class="aspect-[16/9] w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                    loading="lazy"
-                                />
+                            @if ($row->video_url)
                                 <div
-                                    class="absolute left-1/2 top-1/2 flex h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-black/70 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:bg-[rgba(255,0,0,0.9)]"
+                                    class="relative mb-6 cursor-pointer overflow-hidden"
+                                    onclick="window.open('{{ $row->video_url }}', '_blank')"
                                 >
-                                    <i class="fab fa-youtube text-2xl text-white"></i>
+                                    <img
+                                        src="/storage/{{ $row->cover }}"
+                                        alt="video_cover"
+                                        class="aspect-[16/9] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                        loading="lazy"
+                                    />
+                                    <div
+                                        class="absolute left-1/2 top-1/2 flex h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black/70 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:bg-[rgba(255,0,0,0.9)]"
+                                    >
+                                        <i class="fab fa-youtube text-2xl text-white"></i>
+                                    </div>
                                 </div>
-                            </div>
+                            @else
+                                <div class="mb-6 overflow-hidden">
+                                    <img
+                                        src="/storage/{{ $row->cover }}"
+                                        alt="video_cover"
+                                        class="aspect-[16/9] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                        loading="lazy"
+                                    />
+                                </div>
+                            @endif
+
                             <div class="mb-4 flex items-center">
                                 <div>
-                                    <div class="font-roboto text-2xl font-bold text-sky-500">{{ $t["name"] }}</div>
-                                    <p class="font-roboto text-lg text-sky-600">{{ $t["title"] }}</p>
+                                    <div class="font-roboto text-2xl font-bold text-sky-500">{{ $row->name }}</div>
+                                    <p class="font-roboto text-lg text-sky-600">{{ $row->title }}</p>
                                     <div class="mt-2 flex text-xl text-yellow-400">
-                                        @for ($i = 0; $i < $t['stars']; $i++)
+                                        @for ($i = 0; $i < $row->stars; $i++)
                                             <i class="fas fa-star"></i>
                                         @endfor
                                     </div>
                                 </div>
                             </div>
-                            <blockquote class="text-lg leading-relaxed text-gray-700">{!! $t["content"] !!}</blockquote>
+                            <div class="whitespace-pre-line text-lg leading-relaxed text-gray-700">{{ $row->comment }}</div>
                         </div>
                     </div>
                 @endforeach
@@ -180,15 +161,21 @@
                     class="inline-flex items-center rounded-full border border-white/20 bg-white/90 px-12 py-6 shadow-2xl backdrop-blur-sm"
                 >
                     <div class="mr-6 text-left">
-                        <div class="text-2xl font-bold text-orange-500 md:text-4xl">5星好評</div>
-                        <div class="text-gray-600">來自 200+ 真實客戶</div>
+                        <div class="text-2xl font-bold text-orange-500 md:text-4xl">{{ intval($average_stars) }}星好評</div>
+                        <div class="text-gray-600">來自 {{ $reviews->count() }}+ 真實客戶</div>
                     </div>
                     <div class="flex text-xl text-yellow-400 md:text-3xl">
-                        <i class="fas fa-star animate-pulse"></i>
-                        <i class="fas fa-star animate-pulse delay-100"></i>
-                        <i class="fas fa-star animate-pulse delay-200"></i>
-                        <i class="fas fa-star animate-pulse delay-300"></i>
-                        <i class="fas fa-star delay-400 animate-pulse"></i>
+                        @for ($i = 0; $i < $fullStars; $i++)
+                            <i class="fas fa-star animate-pulse" style="animation-delay: {{ $i * 100 }}ms"></i>
+                        @endfor
+
+                        @if ($halfStar)
+                            <i class="fas fa-star-half-alt animate-pulse" style="animation-delay: {{ $fullStars * 100 }}ms"></i>
+                        @endif
+
+                        @for ($i = 0; $i < $emptyStars; $i++)
+                            <i class="far fa-star" style="animation-delay: {{ ($fullStars + ($halfStar ? 1 : 0) + $i) * 100 }}ms"></i>
+                        @endfor
                     </div>
                 </div>
             </div>
@@ -199,74 +186,38 @@
     <section>
         <div
             x-data="{
-                activeFilter: '全部',
-                portfolioItems: [
-                    {
-                        title: '香港印刷中心',
-                        category: '網頁建立及設計',
-                        image: 'https://flowdigital.com.hk/wp-content/uploads/2024/03/FlowDigital-Client-Case-1-768x534.jpg',
-                    },
-                    {
-                        title: 'Panda English',
-                        category: 'SEO搜尋引擎優化',
-                        image: 'https://flowdigital.com.hk/wp-content/uploads/2023/12/FlowDigital-Client-Case-768x534.jpg',
-                    },
-                    {
-                        title: 'iMath',
-                        category: 'SEO搜尋引擎優化',
-                        image: 'https://flowdigital.com.hk/wp-content/uploads/2023/11/FlowDigital-Client-Case-30-768x534.png',
-                    },
-                    {
-                        title: '補習配對平台 Upskyler ',
-                        category: 'SEO搜尋引擎優化',
-                        image: 'https://flowdigital.com.hk/wp-content/uploads/2023/12/FlowDigital-Client-Case-35-768x534.png',
-                    },
-                    {
-                        title: '英文老師Ms Priscilla',
-                        category: 'SEO搜尋引擎優化',
-                        image: 'https://flowdigital.com.hk/wp-content/uploads/2023/12/FlowDigital-Client-Case-32-768x534.png',
-                    },
-                    {
-                        title: 'Easy Math For Kids 珠心算課程',
-                        category: '網頁建立及設計',
-                        image: 'https://flowdigital.com.hk/wp-content/uploads/2023/11/FlowDigital-Client-Case-27-768x534.png',
-                    },
-                    {
-                        title: '室內設計公司 Solid Idea',
-                        category: '網頁建立及設計',
-                        image: 'https://flowdigital.com.hk/wp-content/uploads/2023/12/FlowDigital-Client-Case-37-768x534.png',
-                    },
-                    {
-                        title: '經致中文補習',
-                        category: 'SEO搜尋引擎優化',
-                        image: 'https://flowdigital.com.hk/wp-content/uploads/2023/12/FlowDigital-Client-Case-33-768x534.png',
-                    },
-                    {
-                        title: 'First clean 滅蟲公司',
-                        category: '網頁建立及設計',
-                        image: 'https://flowdigital.com.hk/wp-content/uploads/2023/11/FlowDigital-Client-Case-28-768x534.png',
-                    },
-                ],
+                activeFilter: 0,
+                caseTypes: @js($case_types->map(fn ($t) => ["id" => $t->id, "name" => $t->name])),
+                portfolioItems: @js($cases->map(
+                            fn ($c) => [
+                                "id" => $c->id,
+                                "title" => $c->title,
+                                "image" => asset("storage/" . $c->cover),
+                                "case_type_id" => $c->case_type_id,
+                                "case_type_name" => $c->caseType->name ?? "",
+                            ],
+                        )),
                 filteredItems: [],
                 init() {
                     this.filteredItems = [...this.portfolioItems]
                 },
-                filterItems(category) {
-                    this.activeFilter = category
+                filterItems(typeId) {
+                    this.activeFilter = typeId
 
                     const newFiltered =
-                        category === '全部'
+                        typeId === 0
                             ? this.portfolioItems
-                            : this.portfolioItems.filter((i) => i.category === category)
+                            : this.portfolioItems.filter((i) => i.case_type_id === typeId)
 
-                    const currentTitles = new Set(this.filteredItems.map((i) => i.title))
-                    const newTitles = new Set(newFiltered.map((i) => i.title))
+                    const currentIds = new Set(this.filteredItems.map((i) => i.id))
+                    const newIds = new Set(newFiltered.map((i) => i.id))
 
+                    // Zoom-out
                     this.$refs.portfolioContainer
                         .querySelectorAll('.portfolio-item')
                         .forEach((el) => {
-                            const title = el.querySelector('[x-text]').textContent
-                            if (! newTitles.has(title)) {
+                            const id = parseInt(el.getAttribute('data-id'))
+                            if (currentIds.has(id) && ! newIds.has(id)) {
                                 el.classList.add('animate-zoom-out')
                             }
                         })
@@ -274,13 +225,13 @@
                     setTimeout(() => {
                         this.filteredItems = [...newFiltered]
 
-                        // Zoom-in for newly added items
+                        // Zoom-in
                         this.$nextTick(() => {
                             this.$refs.portfolioContainer
                                 .querySelectorAll('.portfolio-item')
                                 .forEach((el) => {
-                                    const title = el.querySelector('[x-text]').textContent
-                                    if (! currentTitles.has(title)) {
+                                    const id = parseInt(el.getAttribute('data-id'))
+                                    if (newIds.has(id) && ! currentIds.has(id)) {
                                         el.classList.add('animate-zoom-in')
                                         el.addEventListener(
                                             'animationend',
@@ -295,26 +246,28 @@
             }"
             class="container mx-auto max-w-7xl px-6 py-20"
         >
-            <div class="mb-12 text-center">
-                <div class="mb-4 text-4xl font-bold text-gray-800 md:text-5xl">客戶成功案例</div>
-                <p class="mx-auto max-w-2xl text-xl text-gray-600">我們引以自豪，來自香港各行各業的客戶</p>
+            <div class="mb-12 whitespace-pre-line text-center">
+                <div class="mb-4 text-4xl font-bold text-gray-800 md:text-5xl">{{ $cases_section->data["title"] }}</div>
+                <p class="mx-auto max-w-2xl text-xl text-gray-600">{{ $cases_section->data["subtitle"] }}</p>
             </div>
 
             <div class="mb-12 flex flex-wrap justify-between gap-4 sm:justify-center">
-                <template x-for="category in ['全部','SEO搜尋引擎優化','網頁建立及設計']" :key="category">
+                <template x-for="type in caseTypes" :key="type.id">
                     <button
-                        @click="filterItems(category)"
-                        :class="activeFilter === category ? 'text-sky-500 after:scale-x-100' : 'text-gray-700 after:scale-x-0'"
+                        @click="filterItems(type.id)"
+                        :class="activeFilter === type.id ? 'text-sky-500 after:scale-x-100' : 'text-gray-700 after:scale-x-0'"
                         class="relative rounded-full px-0 py-4 text-base font-medium outline-none transition-all duration-300 after:absolute after:bottom-0 after:left-1/2 after:h-[3px] after:w-full after:origin-center after:-translate-x-1/2 after:scale-x-0 after:bg-sky-500 after:transition-transform after:duration-300 after:content-[''] focus:outline-none md:px-6 md:text-2xl"
-                        x-text="category"
+                        x-text="type.name"
                     ></button>
                 </template>
             </div>
 
             <div x-ref="portfolioContainer" class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                <template x-for="item in filteredItems" :key="item.title">
-                    <div
+                <template x-for="item in filteredItems" :key="item.id">
+                    <a
+                        :href="`/case/${item.id}/${encodeURIComponent(item.title)}`"
                         class="animate-on-scroll portfolio-item group cursor-pointer overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl"
+                        :data-id="item.id"
                     >
                         <div class="relative bg-gray-200">
                             <img
@@ -329,7 +282,7 @@
                                 <div class="px-4 text-center text-3xl font-bold text-white" x-text="item.title"></div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </template>
             </div>
 
@@ -346,11 +299,12 @@
             </div>
 
             <div class="mt-10 flex justify-center">
-                <button
+                <a
+                    href="{{ $cases_section->data["button_link"] }}"
                     class="transform rounded-md bg-sky-500 px-8 py-4 font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 >
-                    更多品牌成功故事
-                </button>
+                    {{ $cases_section->data["button_text"] }}
+                </a>
             </div>
         </div>
     </section>

@@ -201,6 +201,19 @@ return [
         'showcase_hero' => '展示圖文'
     ],
 
+    'review' => [
+        'label' => '客戶評價',
+        'resource_label' => '客戶評價',
+        'review' => '評價',
+        'client_info' => '客戶資訊',
+        'name' => '客戶名稱',
+        'title' => '職稱/頭銜',
+        'stars' => '星數',
+        'video_url' => '影片連結',
+        'cover' => '影片封面',
+        'comment' => '評論內容',
+    ],
+
     'case' => [
         'label' => '客戶個案',
         'resource_label' => '個案管理',

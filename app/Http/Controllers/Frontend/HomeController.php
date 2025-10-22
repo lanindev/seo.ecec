@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\CaseModel;
+use App\Models\CaseType;
 use App\Models\HomeSection;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,14 +18,34 @@ class HomeController extends Controller
     {
         $page = new \stdClass();
         $page->slug = "home";
-        
+
         $banner = HomeSection::where('key', 'banner')->first();
         $media = HomeSection::where('key', 'media')->first();
+
+        $reviews_section = HomeSection::where('key', 'reviews')->first();
+
+        $reviews = Review::get();
+        $average_stars = Review::avg('stars');
+
+        $case_types = CaseType::has('cases')->get();
+
+        $case_types->prepend((object)[
+            'id' => 0,
+            'name' => '全部',
+        ]);
+
+        $case_types_all = CaseType::get();
+
+        $cases = CaseModel::with('caseType')->get();
+
+        $cases_section = HomeSection::where('key', 'cases')->first();
+
         $tech = HomeSection::where('key', 'tech_and_data')->first();
         $ourPhilosophy = HomeSection::where('key', 'our_philosophy')->first();
         $seo = HomeSection::where('key', 'seo')->first();
 
-        return view('frontend.home', compact('page', 'banner', 'media', 'tech', 'ourPhilosophy', 'seo'));
+
+        return view('frontend.home', compact('page', 'banner', 'media', 'reviews_section', 'reviews', 'average_stars', 'case_types', 'case_types_all', 'cases', 'cases_section', 'tech', 'ourPhilosophy', 'seo'));
     }
 
     /**

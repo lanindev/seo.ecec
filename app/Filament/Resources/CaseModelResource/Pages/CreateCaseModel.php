@@ -15,8 +15,8 @@ class CreateCaseModel extends CreateRecord
     {
         $imageProcessingService = app(ImageProcessingService::class);
 
-        if (isset($data['thumbnail']) && $data['thumbnail'] instanceof TemporaryUploadedFile) {
-            $data['thumbnail'] = $imageProcessingService->processTemporaryFile($data['thumbnail'], 'cases');
+        if (isset($data['cover']) && $data['cover'] instanceof TemporaryUploadedFile) {
+            $data['cover'] = $imageProcessingService->processTemporaryFile($data['cover'], 'cases');
         }
 
         if (!empty($data['content_components'])) {

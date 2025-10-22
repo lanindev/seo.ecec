@@ -25,7 +25,7 @@ class CaseShowcaseResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-presentation-chart-line';
 
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = 22;
 
     public static function getNavigationGroup(): ?string
     {
